@@ -1,0 +1,24 @@
+package rules;
+
+import ru.firesin.drools.model.Person;
+
+// Правило валидации возраста
+rule "Age Validation"
+    when
+        $person : Person(age < 0 || age > 150)
+    then
+        System.out.println("ВНИМАНИЕ: Некорректный возраст для " + $person.getName() + ": " + $person.getAge());
+        $person.setCategory("INVALID");
+        drools.halt();
+end
+
+// Правило для особых случаев - очень пожилые люди (100+ лет)
+rule "Centenarian Special"
+    when
+        $person : Person(age >= 100)
+    then
+        $person.setCategory("CENTENARIAN");
+        $person.setDiscount(0.50); // 50% скидка
+        $person.setEligible(true);
+        System.out.println("Специальная скидка долгожителя для: " + $person.getName());
+end

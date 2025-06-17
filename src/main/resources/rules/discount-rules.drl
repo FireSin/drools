@@ -1,0 +1,47 @@
+package rules;
+
+import ru.firesin.drools.model.Person;
+
+// Правило для детей (до 12 лет)
+rule "Child Discount"
+    when
+        $person : Person(age < 12)
+    then
+        $person.setCategory("CHILD");
+        $person.setDiscount(0.20); // 20% скидка
+        $person.setEligible(true);
+        System.out.println("Применена детская скидка для: " + $person.getName());
+end
+
+// Правило для подростков (12-17 лет)
+rule "Teen Discount"
+    when
+        $person : Person(age >= 12 && age < 18)
+    then
+        $person.setCategory("TEEN");
+        $person.setDiscount(0.15); // 15% скидка
+        $person.setEligible(true);
+        System.out.println("Применена подростковая скидка для: " + $person.getName());
+end
+
+// Правило для пенсионеров (65+ лет)
+rule "Senior Discount"
+    when
+        $person : Person(age >= 65 && age < 100)
+    then
+        $person.setCategory("SENIOR");
+        $person.setDiscount(0.25); // 25% скидка
+        $person.setEligible(true);
+        System.out.println("Применена пенсионная скидка для: " + $person.getName());
+end
+
+// Правило для взрослых (18-64 года)
+rule "Adult Category"
+    when
+        $person : Person(age >= 18 && age < 65)
+    then
+        $person.setCategory("ADULT");
+        $person.setDiscount(0.0); // Без скидки
+        $person.setEligible(false);
+        System.out.println("Взрослая категория для: " + $person.getName());
+end

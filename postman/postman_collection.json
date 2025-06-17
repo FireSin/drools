@@ -1,0 +1,451 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Drools Spring Boot API",
+		"description": "Коллекция для тестирования различных подходов работы с Drools 10.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345678"
+	},
+	"item": [
+		{
+			"name": "1. Info - Получить информацию об API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/info",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"info"
+					]
+				},
+				"description": "Получает информацию о доступных подходах работы с правилами Drools"
+			},
+			"response": []
+		},
+		{
+			"name": "2. Quick Test - Ребенок (8 лет)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/test/8",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"test",
+						"8"
+					]
+				},
+				"description": "Быстрый тест для проверки детской скидки (20%)"
+			},
+			"response": []
+		},
+		{
+			"name": "3. Quick Test - Подросток (15 лет)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/test/15",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"test",
+						"15"
+					]
+				},
+				"description": "Быстрый тест для проверки подростковой скидки (15%)"
+			},
+			"response": []
+		},
+		{
+			"name": "4. Quick Test - Взрослый (30 лет)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/test/30",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"test",
+						"30"
+					]
+				},
+				"description": "Быстрый тест для взрослого без скидки"
+			},
+			"response": []
+		},
+		{
+			"name": "5. Quick Test - Пенсионер (70 лет)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/test/70",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"test",
+						"70"
+					]
+				},
+				"description": "Быстрый тест для проверки пенсионной скидки (25%)"
+			},
+			"response": []
+		},
+		{
+			"name": "6. Quick Test - Долгожитель (105 лет)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/test/105",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"test",
+						"105"
+					]
+				},
+				"description": "Быстрый тест для проверки специальной скидки долгожителя (50%)"
+			},
+			"response": []
+		},
+		{
+			"name": "7. Static Rules - Обработка ребенка",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Alice Johnson\",\n  \"age\": 9\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/static",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"static"
+					]
+				},
+				"description": "Обработка с использованием статически загруженных правил"
+			},
+			"response": []
+		},
+		{
+			"name": "8. Static Rules - Обработка взрослого",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Bob Smith\",\n  \"age\": 35\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/static",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"static"
+					]
+				},
+				"description": "Тест взрослого без скидки"
+			},
+			"response": []
+		},
+		{
+			"name": "9. Static Rules - Пакетная обработка",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"name\": \"Child User\",\n    \"age\": 7\n  },\n  {\n    \"name\": \"Teen User\",\n    \"age\": 16\n  },\n  {\n    \"name\": \"Adult User\",\n    \"age\": 28\n  },\n  {\n    \"name\": \"Senior User\",\n    \"age\": 68\n  },\n  {\n    \"name\": \"Centenarian User\",\n    \"age\": 102\n  }\n]"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/static/batch",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"static",
+						"batch"
+					]
+				},
+				"description": "Пакетная обработка нескольких пользователей одновременно"
+			},
+			"response": []
+		},
+		{
+			"name": "10. KieHelper - Обработка подростка",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Charlie Brown\",\n  \"age\": 14\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/kiehelper",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"kiehelper"
+					]
+				},
+				"description": "Обработка с использованием KieHelper (упрощенный API)"
+			},
+			"response": []
+		},
+		{
+			"name": "11. Dynamic Rules - Кастомное правило",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"person\": {\n    \"name\": \"Dynamic Test User\",\n    \"age\": 45\n  },\n  \"rules\": \"package rules; import ru.firesin.drools.model.Person; rule \\\"Middle Age Special\\\" when $person : Person(age >= 40 && age < 50) then $person.setCategory(\\\"MIDDLE_AGED\\\"); $person.setDiscount(0.10); $person.setEligible(true); System.out.println(\\\"Middle age discount applied for: \\\" + $person.getName()); end\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/dynamic",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"dynamic"
+					]
+				},
+				"description": "Применение кастомного правила для людей среднего возраста (40-49 лет)"
+			},
+			"response": []
+		},
+		{
+			"name": "12. Dynamic Rules - VIP правило",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"person\": {\n    \"name\": \"VIP Customer\",\n    \"age\": 35\n  },\n  \"rules\": \"package rules; import ru.firesin.drools.model.Person; rule \\\"VIP Rule\\\" when $person : Person(name.contains(\\\"VIP\\\")) then $person.setCategory(\\\"VIP\\\"); $person.setDiscount(0.30); $person.setEligible(true); System.out.println(\\\"VIP discount applied for: \\\" + $person.getName()); end\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/dynamic",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"dynamic"
+					]
+				},
+				"description": "Применение VIP правила для клиентов с 'VIP' в имени"
+			},
+			"response": []
+		},
+		{
+			"name": "13. File Rules - Discount Rules",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"File Test User\",\n  \"age\": 72\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/file/discount-rules.drl",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"file",
+						"discount-rules.drl"
+					]
+				},
+				"description": "Загрузка и применение правил из файла discount-rules.drl"
+			},
+			"response": []
+		},
+		{
+			"name": "14. File Rules - Validation Rules",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Invalid Age User\",\n  \"age\": -5\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/file/validation-rules.drl",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"file",
+						"validation-rules.drl"
+					]
+				},
+				"description": "Тест правил валидации с некорректным возрастом"
+			},
+			"response": []
+		},
+		{
+			"name": "15. Edge Cases - Граничные значения",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"name\": \"Boundary Child\",\n    \"age\": 11\n  },\n  {\n    \"name\": \"Boundary Teen\",\n    \"age\": 12\n  },\n  {\n    \"name\": \"Boundary Adult Start\",\n    \"age\": 18\n  },\n  {\n    \"name\": \"Boundary Adult End\",\n    \"age\": 64\n  },\n  {\n    \"name\": \"Boundary Senior\",\n    \"age\": 65\n  }\n]"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/drools/static/batch",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"drools",
+						"static",
+						"batch"
+					]
+				},
+				"description": "Тестирование граничных значений возраста"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Общие тесты для всех запросов",
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test(\"Response time is less than 2000ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+					"});",
+					"",
+					"pm.test(\"Content-Type is application/json\", function () {",
+					"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+					"});",
+					"",
+					"// Специфичные тесты для Person объектов",
+					"if (pm.response.json() && pm.response.json().name) {",
+					"    pm.test(\"Person object has required fields\", function () {",
+					"        const person = pm.response.json();",
+					"        pm.expect(person).to.have.property('name');",
+					"        pm.expect(person).to.have.property('age');",
+					"        pm.expect(person).to.have.property('category');",
+					"        pm.expect(person).to.have.property('discount');",
+					"        pm.expect(person).to.have.property('eligible');",
+					"    });",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
